@@ -1,0 +1,21 @@
+
+.chat_message {
+  height: 100%;
+  position: relative;
+}
+
+.chat_message_messages {
+  display: flex;
+  height: 85%;
+  flex-direction: column;
+  justify-content: end;}
+
+.chat_message_footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.8rem;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
