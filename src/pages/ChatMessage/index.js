@@ -3,7 +3,6 @@ import { useSelector } from "react-redux";
 import { Button } from "../../components/Button";
 import { TextArea } from "../../components/TextArea";
 import { UserMessages } from "../../components/UserMessages";
-import { usePrevious } from "../../hooks/usePrevious";
 import { selectCurrentUser } from "../../store/user";
 import Login from "../Login";
 import './index.css';
