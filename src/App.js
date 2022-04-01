@@ -1,9 +1,13 @@
+import { AppLayout } from './layout/AppLayout';
+import ChatMessage from './pages/ChatMessage';
 import './App.css';
 
 function App() {
   return (
     <div className="App">
-     <div>Chat Application</div>
+      <AppLayout>
+        <ChatMessage />
+      </AppLayout>
     </div>
   );
 }
