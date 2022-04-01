@@ -17,7 +17,7 @@ export const UserMessages = ({
         const senderInitials = getInitials(from);
         const isCurrentUser = currentUserInitials === senderInitials;
         return <UserMessage
-          key={id}
+          key={createdAt}
           initials={senderInitials}
           body={body}
           align={isCurrentUser ? 'right' : 'left'}

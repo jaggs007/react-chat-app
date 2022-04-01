@@ -1,8 +1,9 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { Button } from "../../components/Button";
 import { TextArea } from "../../components/TextArea";
 import { UserMessages } from "../../components/UserMessages";
+import { usePrevious } from "../../hooks/usePrevious";
 import { selectCurrentUser } from "../../store/user";
 import Login from "../Login";
 import './index.css';
@@ -10,17 +11,23 @@ import './index.css';
 const ChatMessage = () => {
   const { firstName, lastName } = useSelector(selectCurrentUser);
   const [newMessage, setNewMessage] = useState('');
+  const [allMessages, setAllMessages] = useState([]);
+
+  useEffect(() => {
+  setInterval(() => {
+    const storedMessages = JSON.parse(localStorage.getItem("messages"));
+    setAllMessages(storedMessages)
+  }, 1000)
+  })
 
   const onMessageChange = (e) => {
     setNewMessage(e.target.value);
   }
 
-  let messageId = 0
-
   const onSend = () => {
     var storedMessages = JSON.parse(localStorage.getItem("messages")) || [];
     const newMessages = [...storedMessages, {
-      id: messageId++,
+      id: Math.random(),
       message: newMessage,
       createdAt: Date.now(),
       from: `${firstName} ${lastName}`
@@ -28,8 +35,6 @@ const ChatMessage = () => {
     localStorage.setItem('messages', JSON.stringify(newMessages))
     setNewMessage('')
   }
-
-  var allMessages = JSON.parse(localStorage.getItem("messages"));
 
   return <div className='chat_message'>
     {
