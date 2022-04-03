@@ -62,7 +62,7 @@ export const Login = () => {
     }
     <div className="login_footer">
       <Button text='Login' onClick={onLogin} />
-      <Button text='Clear' onClick={() => localStorage.clear()} />
+      <Button text='Clear Storage' onClick={() => localStorage.clear()} />
     </div>
   </div>
 }
