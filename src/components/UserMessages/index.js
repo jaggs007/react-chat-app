@@ -8,22 +8,27 @@ export const UserMessages = ({
   messages,
 }) => {
   const user = useSelector(selectCurrentUser);
-
   return <div className='user_messages'>
-    <div className='user_messages_list'>
-      {(messages || []).map((message, i) => {
-        const { id, message: body, createdAt, from } = message;
-        const currentUserInitials = getInitials(`${user.firstName} ${user.lastName}`);
-        const senderInitials = getInitials(from);
-        const isCurrentUser = currentUserInitials === senderInitials;
-        return <UserMessage
-          key={createdAt}
-          initials={senderInitials}
-          body={body}
-          align={isCurrentUser ? 'right' : 'left'}
-        />
-      })}
-    </div>
+    {!messages
+      ? <div className='user_message_empty'>
+        <span>{`Welcome ${user.firstName} ${user.lastName}.`}&nbsp;</span>
+        <span>Send your first message!</span>
+      </div>
+      : (<div className='user_messages_list'>
+        {(messages || []).map((message, i) => {
+          const { id, message: body, createdAt, from } = message;
+          const currentUserInitials = getInitials(`${user.firstName} ${user.lastName}`);
+          const senderInitials = getInitials(from);
+          const isCurrentUser = currentUserInitials === senderInitials;
+          return <UserMessage
+            key={createdAt}
+            initials={senderInitials}
+            body={body}
+            align={isCurrentUser ? 'right' : 'left'}
+          />
+        })}
+      </div>)
+    }
   </div>
 }
 
