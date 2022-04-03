@@ -17,13 +17,14 @@ const ChatMessage = () => {
       const storedMessages = JSON.parse(localStorage.getItem("messages"));
       setAllMessages(storedMessages)
     }, 1000)
-  })
+  }, [])
 
   const onMessageChange = (e) => {
     setNewMessage(e.target.value);
   }
 
   const onSend = () => {
+    if (!newMessage) return;
     var storedMessages = JSON.parse(localStorage.getItem("messages")) || [];
     const newMessages = [...storedMessages, {
       id: Math.random(),

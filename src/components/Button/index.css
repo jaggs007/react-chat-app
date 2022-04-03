@@ -5,11 +5,11 @@
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  background: #230ab4;
-  color: #ffffff;
+  background: #ffffff;
+  color: #9E96B1;
   font-weight: bold;
   border: 1px solid #230ab4;
-  border-radius: 0.4rem;
+  border-radius: 1rem;
 }
 
 .button:hover {

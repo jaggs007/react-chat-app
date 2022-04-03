@@ -7,7 +7,7 @@
 
 .chat_message_load {
   text-align: center;
-  background-color: blue;
+  background-color: #7861E8;
   width: 100%;
   padding: 1.2rem;
   position: sticky;
@@ -15,17 +15,12 @@
 }
 
 .chat_message_footer {
-  background: #ffffff;
+  background: #7861E8;
+  padding: 2rem;
+  border-radius: 0.8rem;
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 0.8rem;
-  position: absolute;
-  bottom: 0;
-  width: 100%;
   position: sticky;
-  left: 25px;
-  bottom: 20px;
-  margin-top: auto;
-
 }

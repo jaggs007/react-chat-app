@@ -1,13 +1,16 @@
 .user_messages {
   padding: 2rem;
+  overflow: auto;
+  min-height: 600px;
 }
 
 .user_message {
   display: flex;
-  gap: 2rem;
-  padding: 0.4rem 0.8rem;
+  gap: 0.8rem;
+  padding: 0.2rem;
   justify-content: center;
   align-items: center;
+  
 }
 
 .user_message.is__left {
@@ -19,22 +22,38 @@
   flex-direction: row-reverse;
 }
 
+.user_message.is__right .user_message_body{
+  background-color: #7861E8;
+  color: #ffffff;
+}
+
+.user_message.is__left .user_message_body{
+  background-color: #e6e6e6;
+  color: #000000;
+}
+
 .user_messages_list {
   display: flex;
   flex-direction: column;
-  gap: 2rem;
+  gap: 0.8rem;
 }
 
 .user_message_initials {
-  border: 2px solid #DFDFDF;
-  width: 2rem;
-  height: 2rem;
+  border: 2px solid #7861E8;
+  width: 2.8rem;
+  height: 2.8rem;
   display: flex;
   align-items: center;
   justify-content: center;
   border-radius: 100%;
   color: #FFFFFF;
-  background-color: gray;
+  background-color: #7861E8;
+}
+
+.user_message_initials.is__left {
+  border: 2px solid #e6e6e6;
+  color: #000000;
+  background-color: #e6e6e6;
 }
 
 .user_message_body {
