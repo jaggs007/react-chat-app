@@ -1,7 +1,8 @@
 
 .chat_message {
-  /* height: 100%; */
-  position: relative;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
 .chat_message_load {
@@ -11,13 +12,6 @@
   padding: 1.2rem;
   position: sticky;
   top: 0;
-}
-
-.chat_message_messages {
-  display: flex;
-  height: 85%;
-  flex-direction: column;
-  justify-content: end;
 }
 
 .chat_message_footer {
@@ -32,5 +26,6 @@
   position: sticky;
   left: 25px;
   bottom: 20px;
+  margin-top: auto;
 
 }

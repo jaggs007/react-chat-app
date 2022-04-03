@@ -13,10 +13,10 @@ const ChatMessage = () => {
   const [allMessages, setAllMessages] = useState([]);
 
   useEffect(() => {
-  setInterval(() => {
-    const storedMessages = JSON.parse(localStorage.getItem("messages"));
-    setAllMessages(storedMessages)
-  }, 1000)
+    setInterval(() => {
+      const storedMessages = JSON.parse(localStorage.getItem("messages"));
+      setAllMessages(storedMessages)
+    }, 1000)
   })
 
   const onMessageChange = (e) => {
@@ -40,11 +40,9 @@ const ChatMessage = () => {
       !firstName && !lastName
         ? <Login />
         : <>
-          <div className='chat_message_messages'>
-            <UserMessages
-              messages={allMessages}
-            />
-          </div>
+          <UserMessages
+            messages={allMessages}
+          />
           <div className='chat_message_footer'>
             <TextArea value={newMessage} onChange={onMessageChange} placeholder='Type message' />
             <Button text='Send' onClick={onSend} />
