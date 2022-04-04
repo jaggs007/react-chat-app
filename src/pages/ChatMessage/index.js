@@ -23,7 +23,7 @@ const ChatMessage = () => {
   }, [])
 
   useEffect(() => {
-    setFilteredMessages(allMessages.slice(allMessages.length - itemPerPage, allMessages.length))
+    allMessages && setFilteredMessages(allMessages.slice(allMessages.length - itemPerPage, allMessages.length))
   }, [itemPerPage, allMessages])
 
   const onMessageChange = (e) => {
