@@ -65,7 +65,7 @@ const ChatMessage = () => {
         : <>
           <UserMessages
             messageRef={messagesRef}
-            messages={filteredMessages}
+            messages={filteredMessages || []}
             onScroll={onScroll}
           />
           <div className='chat_message_footer'>

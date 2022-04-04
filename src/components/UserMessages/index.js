@@ -11,7 +11,7 @@ export const UserMessages = ({
 }) => {
   const user = useSelector(selectCurrentUser);
   return <div className='user_messages' ref={messageRef} onScroll={onScroll}>
-    {!messages
+    {messages.length === 0
       ? <div className='user_message_empty'>
         <span>{`Welcome ${user.firstName} ${user.lastName}.`}&nbsp;</span>
         <span>Send your first message!</span>
