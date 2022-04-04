@@ -2,6 +2,9 @@
   padding: 2rem;
   overflow: auto;
   min-height: 600px;
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
 }
 
 .user_message {
