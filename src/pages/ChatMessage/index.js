@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useSelector } from "react-redux";
 import { Button } from "../../components/Button";
 import { TextArea } from "../../components/TextArea";
@@ -11,7 +11,10 @@ const ChatMessage = () => {
   const { firstName, lastName } = useSelector(selectCurrentUser);
   const [newMessage, setNewMessage] = useState('');
   const [allMessages, setAllMessages] = useState([]);
-
+  const messagesRef = useRef(null);
+  const [itemPerPage, setItemPerPage] = useState(25);
+  const [filteredMessages, setFilteredMessages] = useState([]);
+  
   useEffect(() => {
     setInterval(() => {
       const storedMessages = JSON.parse(localStorage.getItem("messages"));
@@ -19,9 +22,28 @@ const ChatMessage = () => {
     }, 1000)
   }, [])
 
+  useEffect(() => {
+    setFilteredMessages(allMessages.slice(allMessages.length - itemPerPage, allMessages.length))
+  }, [itemPerPage, allMessages])
+
   const onMessageChange = (e) => {
     setNewMessage(e.target.value);
   }
+
+  const onScroll = () => {
+    if (messagesRef.current) {
+      const { scrollTop, scrollHeight, clientHeight } = messagesRef.current;
+      if (scrollTop === 0 && allMessages.length > itemPerPage) {
+        if (allMessages.length > (itemPerPage + 10)) {
+          setItemPerPage(itemPerPage + 10)
+          setFilteredMessages(allMessages.slice(allMessages.length - (itemPerPage + 10), allMessages.length))
+        } else {
+          setItemPerPage(allMessages.length)
+          setFilteredMessages(allMessages)
+        }
+      }
+    }
+  };
 
   const onSend = () => {
     if (!newMessage) return;
@@ -42,7 +64,9 @@ const ChatMessage = () => {
         ? <Login />
         : <>
           <UserMessages
-            messages={allMessages}
+            messageRef={messagesRef}
+            messages={filteredMessages}
+            onScroll={onScroll}
           />
           <div className='chat_message_footer'>
             <TextArea value={newMessage} onChange={onMessageChange} placeholder='Type message' />

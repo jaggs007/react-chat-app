@@ -6,9 +6,11 @@ import './index.css';
 
 export const UserMessages = ({
   messages,
+  messageRef,
+  onScroll
 }) => {
   const user = useSelector(selectCurrentUser);
-  return <div className='user_messages'>
+  return <div className='user_messages' ref={messageRef} onScroll={onScroll}>
     {!messages
       ? <div className='user_message_empty'>
         <span>{`Welcome ${user.firstName} ${user.lastName}.`}&nbsp;</span>
